@@ -1,7 +1,7 @@
 (* Public extraction interface; stored non-minimal expressions remain compact. *)
 scatteringData`root = DirectoryName[$InputFileName];
-scatteringPMContribution::basis = "Unresolved internal basis symbols in order `1`, l=`2`, m=`3`.";
-scatteringPMContribution::file = "Coefficient file `1` is not available.";
+ScatteringPMCoeff::basis = "Unresolved internal basis symbols in order `1`, l=`2`, m=`3`.";
+ScatteringPMCoeff::file = "Coefficient file `1` is not available.";
 
 scatteringData`toPolylogs[expr_] := Module[{g,f,p,c,convert},
  convert[e_] := e /. {
@@ -18,7 +18,7 @@ scatteringData`toPolylogs[expr_] := Module[{g,f,p,c,convert},
  convert[expr]
 ];
 
-scatteringPMContribution[n_Integer,l_Integer,m_Integer] /;
+ScatteringPMCoeff[n_Integer,l_Integer,m_Integer] /;
  0 <= n <= 10 && 2 <= l <= 22 && 0 <= m <= l := Module[{basisRoot,basisKey,result,file},
  basisRoot = FileNameJoin[{scatteringData`root,"basis"}];
  basisKey = If[l == 2,2,0];
@@ -30,16 +30,16 @@ scatteringPMContribution[n_Integer,l_Integer,m_Integer] /;
  If[!ValueQ[scatteringData`coefficient[n,l,m]],
   file = FileNameJoin[{scatteringData`root,"l" <> ToString[l],
    "l" <> ToString[l] <> "m" <> ToString[m],ToString[n] <> "PM-10PN.m"}];
-  If[!FileExistsQ[file],Message[scatteringPMContribution::file,file];Return[$Failed]];
+  If[!FileExistsQ[file],Message[ScatteringPMCoeff::file,file];Return[$Failed]];
   Check[Get[file],Return[$Failed]]];
  result = scatteringData`toPolylogs[scatteringData`coefficient[n,l,m]]/(b v^2)^n;
  If[!FreeQ[result,niceG|niceFunction|nicePolynomial|niceConjugateG|niceGeneratorDefinition|
    niceFunctionDefinition|nicePolynomialDefinition|niceConjugateGeneratorDefinition|scatteringData`coefficient|G],
-  Message[scatteringPMContribution::basis,n,l,m]; Return[$Failed]];
+  Message[ScatteringPMCoeff::basis,n,l,m]; Return[$Failed]];
  result
 ];
 
-loadScatteringWaveform[l_Integer,m_Integer] /; 2 <= l <= 22 && 0 <= m <= l :=
- Total[Table[scatteringPMContribution[n,l,m],{n,0,10}]];
+ScatteringWFMode[l_Integer,m_Integer] /; 2 <= l <= 22 && 0 <= m <= l :=
+ Total[Table[ScatteringPMCoeff[n,l,m],{n,0,10}]];
 
 evaluateScatteringExpression[expr_,values_List,precision_Integer:30] := N[expr /. values,precision];
