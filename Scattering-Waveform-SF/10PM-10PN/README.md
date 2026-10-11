@@ -14,6 +14,19 @@ parameter. The contribution at order `n` is the coefficient multiplied by
 the stored notation uses symbolic `niceG` generators and shared expressions
 (`niceFunction` and `nicePolynomial`), with definitions supplied in `.m` files.
 
+## Shared definitions (`basis/`)
+
+This directory is required to interpret the compact stored expressions:
+
+- `generators.m`: definitions of the shared generators for `l=3,...,22`.
+- `l2/generators.m`: generator definitions used by the quadrupole files.
+- `l2/functions.m` and `l2/polynomials.m`: shared quadrupole expressions.
+- `l2/conjugates.m`: conjugation identities for the quadrupole generators.
+
+`ScatteringWFPMCoeff` and `ScatteringWFMode` load the required definitions
+automatically and return standard Mathematica functions. Keep `basis/` next
+to the multipole directories; no manual loading of its files is needed.
+
 ## Download
 
 With Git and Git LFS installed:
