@@ -77,11 +77,15 @@ upload. Replace `/path/to` with your local clone directory:
 
 ```wolfram
 Get["/path/to/Scattering-Waveform-1SF/Scattering-Waveform-SF/10PM-10PN/load.m"];
-positiveMode = loadScatteringMode[10, 3, 2];
+loadScatteringMode[10, 3, 2];
+positiveMode = scatteringPMContribution[10, 3, 2];
 scatteringCoefficient[10, 3, 2]
 ```
 
-The arguments are the PM order, `l`, and `m`. This loads the required shared
+The arguments are the PM order, `l`, and `m`. The coefficient accessor returns
+the PM coefficient; `scatteringPMContribution[n,l,m]` includes its physical
+factor `1/(b v^2)^n`, applying `\[Epsilon] -> 1/(b v^2)` immediately.
+The loader loads the required shared
 basis definitions and the selected contribution, preserving the non-minimal
 basis. The symbolic basis functions are intentional; keep them symbolic to
 retain the compact expressions.
@@ -89,16 +93,17 @@ retain the compact expressions.
 To assemble all PM orders for one mode:
 
 ```wolfram
-Do[loadScatteringMode[n, 3, 2], {n, 0, 10}];
-fullMode = Sum[\[Epsilon]^n scatteringCoefficient[n, 3, 2], {n, 0, 10}];
+fullMode = loadScatteringWaveform[3, 2];
+(* Equivalent after loading the eleven coefficients: *)
+fullMode = Sum[scatteringCoefficient[n, 3, 2]/(b v^2)^n, {n, 0, 10}];
 ```
 
 ## Complex conjugation
 
-For positive physical `y` and `v`, with a real PM expansion parameter:
+For positive physical `y`, `v`, and impact parameter `b`:
 
 ```wolfram
-physicalAssumptions = y > 0 && v > 0 && Element[\[Epsilon], Reals];
+physicalAssumptions = y > 0 && v > 0 && b > 0;
 conjugateMode = FullSimplify[
   Conjugate[positiveMode],
   Assumptions -> physicalAssumptions
