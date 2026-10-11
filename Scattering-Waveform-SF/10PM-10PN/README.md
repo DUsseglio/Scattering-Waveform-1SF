@@ -1,6 +1,6 @@
 # Scattering waveform: 10PM–10PN
 
-This collection contains exact waveform multipoles in the compact NICE basis,
+This collection contains exact waveform multipoles in the non-minimal basis,
 with Wolfram Language `.m` files intended for Mathematica 15.0.1.
 
 ## Directory layout
@@ -39,10 +39,10 @@ to the leading `l=2` PN order: the calculation retains velocity powers through
 `v^22`. This is a common absolute cutoff for every multipole; it is not 10PN
 relative to each multipole's own leading order.
 
-## NICE basis and Mathematica
+## Non-minimal basis and Mathematica
 
-All multipoles retain the exact compact NICE representation and rational
-factorization. Shared basis definitions accompany the coefficient files.
+All multipoles retain the exact compact representation and rational factorization. This
+non-minimal basis allows us to reduce the size of most results. Shared basis definitions accompany the coefficient files.
 Load those definitions before evaluating a mode using Mathematica's `Get`.
 The basis symbols remain symbolic on loading to preserve the compact form.
 Do not expand all shared definitions merely to load a coefficient.
@@ -50,7 +50,7 @@ Do not expand all shared definitions merely to load a coefficient.
 Only nonnegative `m` files are stored. Recover negative `m` by complex
 conjugation with the same harmonic phase convention as the calculated modes.
 Use Mathematica's `Conjugate` with the physical real-variable assumptions;
-conjugation also applies to the NICE functions, not just explicit occurrences
+conjugation also applies to the basis functions, not just explicit occurrences
 of `I`. Mathematica's harmonic convention and any phase factor in the full
 waveform normalization must be preserved when forming negative modes.
 
