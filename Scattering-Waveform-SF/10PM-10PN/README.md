@@ -54,6 +54,66 @@ conjugation also applies to the basis functions, not just explicit occurrences
 of `I`. Mathematica's harmonic convention and any phase factor in the full
 waveform normalization must be preserved when forming negative modes.
 
+## Downloading the multipoles
+
+Install Git and Git LFS, then run:
+
+```bash
+git lfs install
+git clone https://github.com/DUsseglio/Scattering-Waveform-1SF.git
+cd Scattering-Waveform-1SF
+git lfs pull
+```
+
+This is currently a private repository, so authenticate with a GitHub account
+that has access. `git lfs pull` downloads the full expressions for files stored
+with Git LFS; a pointer file is not a Mathematica expression.
+
+## Reading results in Mathematica 15.0.1
+
+The following loader and coefficient files will be available with the result
+upload. Replace `/path/to` with your local clone directory:
+
+```wolfram
+Get["/path/to/Scattering-Waveform-1SF/Scattering-Waveform-SF/10PM-10PN/load.m"];
+positiveMode = loadScatteringMode[10, 3, 2];
+scatteringCoefficient[10, 3, 2]
+```
+
+The arguments are the PM order, `l`, and `m`. This loads the required shared
+basis definitions and the selected contribution, preserving the non-minimal
+basis. The symbolic basis functions are intentional; keep them symbolic to
+retain the compact expressions.
+
+To assemble all PM orders for one mode:
+
+```wolfram
+Do[loadScatteringMode[n, 3, 2], {n, 0, 10}];
+fullMode = Sum[\[Epsilon]^n scatteringCoefficient[n, 3, 2], {n, 0, 10}];
+```
+
+## Complex conjugation
+
+For positive physical `y` and `v`, with a real PM expansion parameter:
+
+```wolfram
+physicalAssumptions = y > 0 && v > 0 && Element[\[Epsilon], Reals];
+conjugateMode = FullSimplify[
+  Conjugate[positiveMode],
+  Assumptions -> physicalAssumptions
+];
+conjugateFullMode = FullSimplify[
+  Conjugate[fullMode],
+  Assumptions -> physicalAssumptions
+];
+```
+
+`Conjugate` acts on the complete expression, including symbolic basis
+functions. Those functions can remain conjugated symbolically in the compact
+representation; do not declare all basis functions real or only replace `I`
+by `-I`. Any harmonic phase factor needed for the normalized negative-`m`
+waveform must be applied according to the same convention as the positive mode.
+
 ## Preparation status
 
 The directory structure is prepared. Coefficient files, loading instructions,
