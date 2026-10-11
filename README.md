@@ -4,6 +4,9 @@ This repository contains results discussed in the paper **“Analytical
 Time-Domain Waveforms for Black-Hole Scattering in the Self-Force Expansion”**
 by **Chris Kavanagh, Julio Parra-Martinez and Davide Usseglio**.
 
+The repository will be made public together with the paper. Before that release,
+access is restricted to authorized collaborators.
+
 ## Result collections
 
 - [`Scattering-Waveform-SF/10PM-10PN`](Scattering-Waveform-SF/10PM-10PN/):
