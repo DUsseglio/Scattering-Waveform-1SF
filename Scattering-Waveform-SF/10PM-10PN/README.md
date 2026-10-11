@@ -41,23 +41,24 @@ Replace `/path/to` with the location of the cloned repository:
 ```wolfram
 Get["/path/to/Scattering-Waveform-1SF/Scattering-Waveform-SF/10PM-10PN/load.m"];
 
-loadScatteringMode[10, 3, 2];
-coefficient = scatteringCoefficient[10, 3, 2];
 contribution = scatteringPMContribution[10, 3, 2];
 waveform = loadScatteringWaveform[3, 2];
 ```
 
-The arguments are `(n,l,m)`. `coefficient` is the selected PM coefficient;
-`contribution` includes `(b v^2)^(-n)`. `waveform` loads and sums orders
-`n=0,...,10` with the substitution already applied. All expressions retain
-the non-minimal basis.
+The arguments are `(n,l,m)`. `scatteringPMContribution` loads the selected
+coefficient, restores its factor `(b v^2)^(-n)`, and converts all internal
+basis symbols to Mathematica's built-in polylogarithms. Its output contains
+standard functions, including `HarmonicPolyLog` or `GeneralizedPolyLog`,
+with no internal basis symbols. `loadScatteringWaveform[l,m]` sums orders
+`n=0,...,10` through the same accessor.
 
-For numerical evaluation, the loader resolves these internal symbols into
-Mathematica's built-in `GeneralizedPolyLog`, caching repeated basis functions:
+Use these functions for analytical and numerical extraction: the conversion
+from the compact internal notation is handled automatically. Reading a stored
+coefficient file directly retains that internal notation.
 
 ```wolfram
 value = evaluateScatteringExpression[
-  waveform, {y -> 1/2, b -> 100, v -> 1/10}, 30
+  contribution, {y -> 1/2, b -> 100, v -> 1/10}, 30
 ];
 ```
 
@@ -72,4 +73,4 @@ conjugateWaveform = Refine[
 ];
 ```
 
-Symbolic conjugates of basis functions preserve the compact representation.
+
