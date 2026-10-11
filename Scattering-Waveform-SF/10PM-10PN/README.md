@@ -65,8 +65,9 @@ cd Scattering-Waveform-1SF
 git lfs pull
 ```
 
-This is currently a private repository, so authenticate with a GitHub account
-that has access. `git lfs pull` downloads the full expressions for files stored
+The repository will be made public together with the paper. Before that
+release, authenticate with a GitHub account that has access to the private
+repository. Once public, cloning will not require repository access permissions. `git lfs pull` downloads the full expressions for files stored
 with Git LFS; a pointer file is not a Mathematica expression.
 
 ## Reading results in Mathematica 15.0.1
