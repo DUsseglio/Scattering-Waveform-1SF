@@ -8,7 +8,7 @@ by **Chris Kavanagh, Julio Parra-Martinez and Davide Usseglio**.
 
 - [`Scattering-Waveform-SF/10PM-10PN`](Scattering-Waveform-SF/10PM-10PN/):
   waveform multipoles from `l=2` through `l=22`, through 10PM and the usual
-  10PN cutoff relative to the leading `l=2` order, in the compact NICE basis.
+  10PN cutoff relative to the leading `l=2` order, in the non-minimal basis.
 - [`Scattering-Waveform-SF/Quadrupole:10PM-20PN`](Scattering-Waveform-SF/Quadrupole:10PM-20PN/): reserved for the quadrupole
   results through 10PM and 20PN.
 
