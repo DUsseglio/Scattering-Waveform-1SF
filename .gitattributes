@@ -1,4 +1,11 @@
 "Scattering-Waveform-SF/10PM-10PN/l7/l7m7/10PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
+"Scattering-Waveform-SF/10PM-10PN/l3/l3m2/9PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
+"Scattering-Waveform-SF/10PM-10PN/l3/l3m2/10PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
+"Scattering-Waveform-SF/10PM-10PN/l3/l3m3/9PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
+"Scattering-Waveform-SF/10PM-10PN/l3/l3m3/10PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
+"Scattering-Waveform-SF/10PM-10PN/l3/l3m1/9PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
+"Scattering-Waveform-SF/10PM-10PN/l3/l3m1/10PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
+"Scattering-Waveform-SF/10PM-10PN/l3/l3m0/10PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
 "Scattering-Waveform-SF/10PM-10PN/l10/l10m10/9PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
 "Scattering-Waveform-SF/10PM-10PN/l10/l10m10/10PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
 "Scattering-Waveform-SF/10PM-10PN/l10/l10m8/9PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
