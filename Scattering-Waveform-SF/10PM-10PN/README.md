@@ -41,17 +41,17 @@ Replace `/path/to` with the location of the cloned repository:
 ```wolfram
 Get["/path/to/Scattering-Waveform-1SF/Scattering-Waveform-SF/10PM-10PN/load.m"];
 
-contribution = ScatteringPMCoeff[10, 3, 2];
+contribution = ScatteringWFPMCoeff[10, 3, 2];
 waveform = ScatteringWFMode[3, 2];
 ```
 
-The arguments of `ScatteringPMCoeff[n,l,m]` are:
+The arguments of `ScatteringWFPMCoeff[n,l,m]` are:
 
 - `n`: the PM order, from 0 to 10.
 - `l`: the multipole index, from 2 to 22.
 - `m`: the azimuthal mode for that `l`, from 0 to `l`.
 
-`ScatteringPMCoeff` loads the selected
+`ScatteringWFPMCoeff` loads the selected
 coefficient, restores its factor `(b v^2)^(-n)`, and converts all internal
 basis symbols to Mathematica's built-in polylogarithms. Its output contains
 standard functions, including `HarmonicPolyLog` or `GeneralizedPolyLog`,
