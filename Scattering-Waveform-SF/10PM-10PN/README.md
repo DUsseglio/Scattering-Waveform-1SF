@@ -11,7 +11,8 @@ The PM parameter is substituted immediately as
 `\[Epsilon] = 1/(b v^2)`, where `b` is the impact parameter and `v` the velocity
 parameter. The contribution at order `n` is the coefficient multiplied by
 `(b v^2)^(-n)`. A non-minimal basis reduces the size of most results;
-its shared definitions remain symbolic when loading expressions.
+the stored notation uses symbolic `niceG` generators and shared expressions
+(`niceFunction` and `nicePolynomial`), with definitions supplied in `.m` files.
 
 ## Download
 
@@ -50,6 +51,15 @@ The arguments are `(n,l,m)`. `coefficient` is the selected PM coefficient;
 `contribution` includes `(b v^2)^(-n)`. `waveform` loads and sums orders
 `n=0,...,10` with the substitution already applied. All expressions retain
 the non-minimal basis.
+
+For numerical evaluation, the loader resolves these internal symbols into
+Mathematica's built-in `GeneralizedPolyLog`, caching repeated basis functions:
+
+```wolfram
+value = evaluateScatteringExpression[
+  waveform, {y -> 1/2, b -> 100, v -> 1/10}, 30
+];
+```
 
 ## Complex conjugates
 
