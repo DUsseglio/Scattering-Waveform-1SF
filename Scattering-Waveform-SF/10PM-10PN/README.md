@@ -41,16 +41,22 @@ Replace `/path/to` with the location of the cloned repository:
 ```wolfram
 Get["/path/to/Scattering-Waveform-1SF/Scattering-Waveform-SF/10PM-10PN/load.m"];
 
-contribution = scatteringPMContribution[10, 3, 2];
-waveform = loadScatteringWaveform[3, 2];
+contribution = ScatteringPMCoeff[10, 3, 2];
+waveform = ScatteringWFMode[3, 2];
 ```
 
-The arguments are `(n,l,m)`. `scatteringPMContribution` loads the selected
+The arguments of `ScatteringPMCoeff[n,l,m]` are:
+
+- `n`: the PM order, from 0 to 10.
+- `l`: the multipole index, from 2 to 22.
+- `m`: the azimuthal mode for that `l`, from 0 to `l`.
+
+`ScatteringPMCoeff` loads the selected
 coefficient, restores its factor `(b v^2)^(-n)`, and converts all internal
 basis symbols to Mathematica's built-in polylogarithms. Its output contains
 standard functions, including `HarmonicPolyLog` or `GeneralizedPolyLog`,
-with no internal basis symbols. `loadScatteringWaveform[l,m]` sums orders
-`n=0,...,10` through the same accessor.
+with no internal basis symbols. `ScatteringWFMode[l,m]` gives the waveform for the selected `(l,m)` mode,
+summed over PM orders `n=0,...,10` through the same accessor.
 
 Use these functions for analytical and numerical extraction: the conversion
 from the compact internal notation is handled automatically. Reading a stored
