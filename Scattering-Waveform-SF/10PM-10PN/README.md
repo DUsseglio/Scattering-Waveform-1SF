@@ -1,62 +1,21 @@
-# Scattering waveform: 10PM–10PN
+# 10PM–10PN multipoles
 
-This collection contains exact waveform multipoles in the non-minimal basis,
-with Wolfram Language `.m` files intended for Mathematica 15.0.1.
+## Notation
 
-## Directory layout
+`l` and `m` label the multipole; `n` is the PM order. Files are organized as
+`l{l}/l{l}m{m}/{n}PM-10PN.m`, for `l=2,...,22`, `m=0,...,l`, and `n=0,...,10`.
+Each file contains one PM coefficient. The 10PN cutoff is relative to the
+leading `l=2` order, retaining powers through `v^22` for all multipoles.
 
-```text
-Scattering-Waveform-SF/10PM-10PN/
-  README.md
-  l2/
-    l2m0/
-      0PM-10PN.m
-      1PM-10PN.m
-      ...
-      10PM-10PN.m
-    l2m1/
-    l2m2/
-  l3/
-    l3m0/
-    ...
-    l3m3/
-  ...
-  l22/
-    l22m0/
-    ...
-    l22m22/
-```
+The PM parameter is substituted immediately as
+`\[Epsilon] = 1/(b v^2)`, where `b` is the impact parameter and `v` the velocity
+parameter. The contribution at order `n` is the coefficient multiplied by
+`(b v^2)^(-n)`. A non-minimal basis reduces the size of most results;
+its shared definitions remain symbolic when loading expressions.
 
-The multipole index runs from `l=2` through `l=22`. Each multipole has one
-directory for every nonnegative azimuthal index `m=0,...,l`, including modes
-that vanish at the requested truncation. Each mode has eleven files, one for
-each PM order from 0PM through 10PM: 273 mode directories and 3,003 coefficient
-files in total.
+## Download
 
-Each `nPM-10PN.m` file contains the contribution at that PM order, rather than
-the sum of all lower PM orders. The PN cutoff is the usual 10PN cutoff relative
-to the leading `l=2` PN order: the calculation retains velocity powers through
-`v^22`. This is a common absolute cutoff for every multipole; it is not 10PN
-relative to each multipole's own leading order.
-
-## Non-minimal basis and Mathematica
-
-All multipoles retain the exact compact representation and rational factorization. This
-non-minimal basis allows us to reduce the size of most results. Shared basis definitions accompany the coefficient files.
-Load those definitions before evaluating a mode using Mathematica's `Get`.
-The basis symbols remain symbolic on loading to preserve the compact form.
-Do not expand all shared definitions merely to load a coefficient.
-
-Only nonnegative `m` files are stored. Recover negative `m` by complex
-conjugation with the same harmonic phase convention as the calculated modes.
-Use Mathematica's `Conjugate` with the physical real-variable assumptions;
-conjugation also applies to the basis functions, not just explicit occurrences
-of `I`. Mathematica's harmonic convention and any phase factor in the full
-waveform normalization must be preserved when forming negative modes.
-
-## Downloading the multipoles
-
-Install Git and Git LFS, then run:
+With Git and Git LFS installed:
 
 ```bash
 git lfs install
@@ -65,64 +24,36 @@ cd Scattering-Waveform-1SF
 git lfs pull
 ```
 
-The repository will be made public together with the paper. Before that
-release, authenticate with a GitHub account that has access to the private
-repository. Once public, cloning will not require repository access permissions. `git lfs pull` downloads the full expressions for files stored
-with Git LFS; a pointer file is not a Mathematica expression.
+The repository will become public with the paper. Before release, authenticate
+with a GitHub account that has access.
 
-## Reading results in Mathematica 15.0.1
+## Extract results in Mathematica 15.0.1
 
-The following loader and coefficient files will be available with the result
-upload. Replace `/path/to` with your local clone directory:
+Replace `/path/to` with the location of the cloned repository:
 
 ```wolfram
 Get["/path/to/Scattering-Waveform-1SF/Scattering-Waveform-SF/10PM-10PN/load.m"];
+
 loadScatteringMode[10, 3, 2];
-positiveMode = scatteringPMContribution[10, 3, 2];
-scatteringCoefficient[10, 3, 2]
+coefficient = scatteringCoefficient[10, 3, 2];
+contribution = scatteringPMContribution[10, 3, 2];
+waveform = loadScatteringWaveform[3, 2];
 ```
 
-The arguments are the PM order, `l`, and `m`. The coefficient accessor returns
-the PM coefficient; `scatteringPMContribution[n,l,m]` includes its physical
-factor `1/(b v^2)^n`, applying `\[Epsilon] -> 1/(b v^2)` immediately.
-The loader loads the required shared
-basis definitions and the selected contribution, preserving the non-minimal
-basis. The symbolic basis functions are intentional; keep them symbolic to
-retain the compact expressions.
+The arguments are `(n,l,m)`. `coefficient` is the selected PM coefficient;
+`contribution` includes `(b v^2)^(-n)`. `waveform` loads and sums orders
+`n=0,...,10` with the substitution already applied. All expressions retain
+the non-minimal basis.
 
-To assemble all PM orders for one mode:
+## Complex conjugates
 
-```wolfram
-fullMode = loadScatteringWaveform[3, 2];
-(* Equivalent after loading the eleven coefficients: *)
-fullMode = Sum[scatteringCoefficient[n, 3, 2]/(b v^2)^n, {n, 0, 10}];
-```
-
-## Complex conjugation
-
-For positive physical `y`, `v`, and impact parameter `b`:
+Conjugate the complete expression, including its basis functions:
 
 ```wolfram
-physicalAssumptions = y > 0 && v > 0 && b > 0;
-conjugateMode = FullSimplify[
-  Conjugate[positiveMode],
-  Assumptions -> physicalAssumptions
-];
-conjugateFullMode = FullSimplify[
-  Conjugate[fullMode],
-  Assumptions -> physicalAssumptions
+conjugateWaveform = Refine[
+  Conjugate[waveform],
+  y > 0 && b > 0 && v > 0
 ];
 ```
 
-`Conjugate` acts on the complete expression, including symbolic basis
-functions. Those functions can remain conjugated symbolically in the compact
-representation; do not declare all basis functions real or only replace `I`
-by `-I`. Any harmonic phase factor needed for the normalized negative-`m`
-waveform must be applied according to the same convention as the positive mode.
-
-## Preparation status
-
-The directory structure is prepared. Coefficient files, loading instructions,
-and integrity manifest will be populated and verified after the final
-calculation finishes, before publication to
-`DUsseglio/Scattering-Waveform-1SF`.
+Symbolic conjugates of basis functions preserve the compact representation.
