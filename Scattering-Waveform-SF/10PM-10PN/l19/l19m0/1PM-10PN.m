@@ -1,0 +1,33 @@
+(* Exact finite epsilon^0 vector, PM1, 23 entries; Julio Parra-Martinez's table3.py engine (per-slice
+   reconstruction with relations), converted by julio_engine/exact2wl.py.  Functions: non-minimal generators niceG[label, y]
+   (exact definitions supplied in generators.wl), constants (I*Pi/2), Log[2], Log[y], EulerGamma, Zeta[n].
+   Kinematic labels: v, Log[v], Log[\[Epsilon]], Exp[I*\[CapitalTheta]/2], Exp[I*\[CapitalPhi]]. *)
+radial1PMl19m0 = {
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+((-4194304/71628674846253525)*y^2*(-1 + y^2)*(2431 + (55198)*y^2 + (612326)*y^4 + (4450798)*y^6 + (24074866)*y^8 + (105033142)*y^10 + (396209518)*y^12 + (1408524262)*y^14 + (5562892288)*y^16 + (1408524262)*y^18 + (396209518)*y^20 + (105033142)*y^22 + (24074866)*y^24 + (4450798)*y^26 + (612326)*y^28 + (55198)*y^30 + (2431)*y^32)/((1 + y^2)^19))*(v^20)*(I*Pi/2),
+0,
+((-2097152/2936775668696394525)*y^2*(-1 + y^2)*(333047 + (8166444)*y^2 + (97575049)*y^4 + (759567864)*y^6 + (4351302964)*y^8 + (19674167912)*y^10 + (73562691980)*y^12 + (233175472280)*y^14 + (573135405290)*y^16 + (-7436291643580)*y^18 + (573135405290)*y^20 + (233175472280)*y^22 + (73562691980)*y^24 + (19674167912)*y^26 + (4351302964)*y^28 + (759567864)*y^30 + (97575049)*y^32 + (8166444)*y^34 + (333047)*y^36)/((1 + y^2)^21))*(v^22)*(I*Pi/2)};
+
+(* Standard l=2 10PN cutoff: all modes through v^22. *)
+waveform1PMl19m0 = ((-1/8899142925729562361856000000)*Sqrt[10487362412872545619241187934065580038598792286762057072640000000000000/(4*Pi)]/524288)*Sum[radial1PMl19m0[[k+1]] v^k, {k,0,22}];
+
+scatteringData`coefficient[1,19,0] = waveform1PMl19m0;
