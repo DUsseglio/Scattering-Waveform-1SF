@@ -29,6 +29,12 @@ with a GitHub account that has access.
 
 ## Extract results in Mathematica 15.0.1
 
+Mathematica 15.0.1 is used for its built-in harmonic polylogarithms
+([`HarmonicPolyLog`](https://reference.wolfram.com/language/ref/HarmonicPolyLog.html))
+and Goncharov polylogarithms
+([`GeneralizedPolyLog`](https://reference.wolfram.com/language/ref/GeneralizedPolyLog.html)),
+which support numerical evaluation after resolving the non-minimal basis definitions.
+
 Replace `/path/to` with the location of the cloned repository:
 
 ```wolfram
