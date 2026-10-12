@@ -7,7 +7,7 @@
 Each file contains one PM coefficient. The 10PN cutoff is relative to the
 leading `l=2` order, retaining powers through `v^22` for all multipoles.
 
-The time variable is $y = \bar{u} + \sqrt{1 + \bar{u}^2}$, as defined in Eq. (6) of the paper, where $\bar{u}$ is the rescaled retarded time.
+The time variable is `y = \bar{u} + Sqrt[1 + \bar{u}^2]`, as defined in Eq. (6) of the paper, where `\bar{u}` is the rescaled retarded time.
 
 The PM parameter is substituted immediately as
 `\[Epsilon] = 1/(b v^2)`, where `b` is the impact parameter and `v` the velocity
