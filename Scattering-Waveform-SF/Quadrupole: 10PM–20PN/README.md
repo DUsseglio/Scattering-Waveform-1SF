@@ -42,14 +42,23 @@ unzipping is required. The `.unpacked/` cache can be removed when unused.
 
 ## Download
 
-With Git and Git LFS installed:
+With Git and Git LFS installed, run the following commands to download only
+this collection, including its loader, shared basis definitions, and data files:
 
 ```bash
-git lfs install
-git clone https://github.com/DUsseglio/Scattering-Waveform-1SF.git
+git clone --filter=blob:none --sparse https://github.com/DUsseglio/Scattering-Waveform-1SF.git
 cd Scattering-Waveform-1SF
+git lfs install --local --skip-smudge
+git sparse-checkout set "Scattering-Waveform-SF/Quadrupole: 10PM–20PN"
+git config lfs.fetchinclude "Scattering-Waveform-SF/Quadrupole: 10PM–20PN/**"
 git lfs pull
 ```
+
+The other collection is not checked out or downloaded. To update this collection
+later, run `git pull` followed by `git lfs pull`.
+
+For instructions to download both collections, see the
+[repository README](../../README.md#download).
 
 ## Extract results in Mathematica 15.0.1
 
