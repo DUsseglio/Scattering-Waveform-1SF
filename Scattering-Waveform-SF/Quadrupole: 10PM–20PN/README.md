@@ -13,7 +13,7 @@ Each file contains the **total expression**, combining local and nonlocal
 contributions. No separate component files are required. The 0PM result is zero.
 The 20PN cutoff retains 43 velocity slots, through `v^42`.
 
-The time variable is `y = ubar + Sqrt[1 + ubar^2]`, where `ubar` is the rescaled retarded time, as defined in Eq. (6) of the paper.
+The time variable is $y = \bar{u} + \sqrt{1 + \bar{u}^2}$, where $\bar{u}$ is the rescaled retarded time, as defined in Eq. (6) of the paper.
 
 The PM parameter is `\[Epsilon] = 1/(b v^2)`, where `b` is the impact
 parameter and `v` the velocity parameter. The accessor substitutes this in
