@@ -2,8 +2,7 @@
 
 Results accompanying **“Analytical Time-Domain Waveforms for Black-Hole
 Scattering in the Self-Force Expansion”** by **Chris Kavanagh,
-Julio Parra-Martinez and Davide Usseglio**. The repository will become public
-together with the paper.
+Julio Parra-Martinez and Davide Usseglio**.
 
 ## Collections
 
@@ -25,5 +24,3 @@ git clone https://github.com/DUsseglio/Scattering-Waveform-1SF.git
 cd Scattering-Waveform-1SF
 git lfs pull
 ```
-
-Before the public release, access requires GitHub authentication.
