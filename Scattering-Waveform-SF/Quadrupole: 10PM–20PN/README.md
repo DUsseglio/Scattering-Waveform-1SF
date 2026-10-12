@@ -1,9 +1,5 @@
 # Quadrupole: 10PM–20PN
 
-Results discussed in **“Analytical Time-Domain Waveforms for Black-Hole
-Scattering in the Self-Force Expansion”** by **Chris Kavanagh,
-Julio Parra-Martinez and Davide Usseglio**.
-
 ## Notation
 
 `l` and `m` label the multipole; `n` is the PM order. Files follow the same
