@@ -38,9 +38,6 @@ cd Scattering-Waveform-1SF
 git lfs pull
 ```
 
-The repository will become public with the paper. Before release, authenticate
-with a GitHub account that has access.
-
 ## Extract results in Mathematica 15.0.1
 
 Mathematica 15.0.1 is used for its built-in harmonic polylogarithms
@@ -91,5 +88,3 @@ conjugateWaveform = Refine[
   y > 0 && b > 0 && v > 0
 ];
 ```
-
-
