@@ -27,7 +27,8 @@ ScatteringWFPMCoeff[n_Integer,l_Integer,m_Integer] /;
    Scan[Get,FileNameJoin[{basisRoot,"l2",# <> ".m"}] & /@ {"generators","polynomials","functions","conjugates"}],
    Get[FileNameJoin[{basisRoot,"generators.m"}]]];
   scatteringData`basisLoaded[basisKey] = True];
- If[!ValueQ[scatteringData`coefficient[n,l,m]],
+ (* ValueQ can be True for an undefined call once the head has other definitions. *)
+ If[!TrueQ[scatteringData`coefficientLoaded[scatteringData`root,n,l,m]],
   file = FileNameJoin[{scatteringData`root,"l" <> ToString[l],
    "l" <> ToString[l] <> "m" <> ToString[m],ToString[n] <> "PM-10PN.m"}];
   If[!FileExistsQ[file],Message[ScatteringWFPMCoeff::file,file];Return[$Failed]];
@@ -36,6 +37,7 @@ ScatteringWFPMCoeff[n_Integer,l_Integer,m_Integer] /;
  If[!FreeQ[result,niceG|niceFunction|nicePolynomial|niceConjugateG|niceGeneratorDefinition|
    niceFunctionDefinition|nicePolynomialDefinition|niceConjugateGeneratorDefinition|scatteringData`coefficient|G],
   Message[ScatteringWFPMCoeff::basis,n,l,m]; Return[$Failed]];
+ scatteringData`coefficientLoaded[scatteringData`root,n,l,m] = True;
  result
 ];
 
