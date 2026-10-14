@@ -11,6 +11,10 @@ Julio Parra-Martinez and Davide Usseglio**.
 - [Quadrupole: 10PM–20PN](Scattering-Waveform-SF/Quadrupole%3A%2010PM%E2%80%9320PN/):
   quadrupole results.
 
+- [Fluxes and Scattering Angle](Fluxes%20and%20Scattering%20Angle/):
+  radiated energy, radiated angular momentum, the static contribution to
+  angular-momentum loss, and the dissipative scattering angle.
+
 The expressions use a non-minimal basis that reduces the size of most results.
 Notation and Mathematica commands are given in each collection's README.
 
