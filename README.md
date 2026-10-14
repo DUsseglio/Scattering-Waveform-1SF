@@ -20,6 +20,9 @@ Notation and Mathematica commands are given in each collection's README.
 
 ## Download
 
+These download instructions are primarily intended for the scattering waveform
+collections, which contain very large analytic expressions.
+
 With Git and Git LFS installed, choose whether to download both collections
 or only one.
 
