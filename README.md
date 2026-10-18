@@ -14,9 +14,10 @@ Julio Parra-Martinez and Davide Usseglio**.
 - [Fluxes and Scattering Angle](Fluxes%20and%20Scattering%20Angle/):
   radiated energy, radiative angular momentum, and static angular-momentum
   loss through 12PM–10PN, and the dissipative scattering angle through
-  13PM–10PN, in Mathematica notation. Some constants remain as
-  `GeneralizedPolyLog` expressions; their numerical evaluation requires
-  Mathematica 15.0.1.
+  13PM–10PN, in Mathematica notation. Each PM term has a normalized
+  bracket starting at `1 + ...`; shared definitions are used only for
+  `GeneralizedPolyLog` constants. Numerical evaluation requires Mathematica
+  15.0.1.
 
 The waveform expressions use a non-minimal basis that reduces their size.
 Notation and Mathematica commands are given in each collection's README.

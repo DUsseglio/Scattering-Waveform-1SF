@@ -19,7 +19,10 @@ The files define `energyRadiatedPM[p]`, `angmomlossRadiativePM[p]`,
 contributions. The corresponding sums are `energyRadiated`,
 `angmomlossRadiative`, `angmomlossStatic`, and `scattAngleDiss`.
 
-GPL constants use Mathematica 15.0.1 notation
+Each PM contribution factors out its leading nonzero velocity term and
+coefficient, so its bracket starts at `1 + ...`.
+
+The only auxiliary definitions are `gpl...` constants, defined by
 `GeneralizedPolyLog[{a1, ..., ak}, 1]`, with letters in `{0, I, -I}`.
 Some constants remain in this form in the final expressions;
 Mathematica 15.0.1 is required to evaluate these expressions numerically.
