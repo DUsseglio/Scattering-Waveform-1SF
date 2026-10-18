@@ -12,9 +12,9 @@ Julio Parra-Martinez and Davide Usseglio**.
   quadrupole results.
 
 - [Fluxes and Scattering Angle](Fluxes%20and%20Scattering%20Angle/):
-  radiated energy and radiative angular momentum through 9PM–10PN,
-  static angular-momentum loss and the dissipative scattering angle through
-  10PM–10PN, in Mathematica notation. Some constants remain as
+  radiated energy, radiative angular momentum, and static angular-momentum
+  loss through 12PM–10PN, and the dissipative scattering angle through
+  13PM–10PN, in Mathematica notation. Some constants remain as
   `GeneralizedPolyLog` expressions; their numerical evaluation requires
   Mathematica 15.0.1.
 

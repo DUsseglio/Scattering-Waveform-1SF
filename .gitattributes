@@ -35,3 +35,7 @@
 "Scattering-Waveform-SF/10PM-10PN/l5/l5m2/10PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
 "Scattering-Waveform-SF/10PM-10PN/l5/l5m3/10PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
 "Scattering-Waveform-SF/10PM-10PN/l5/l5m1/10PM-10PN.m" filter=lfs diff=lfs merge=lfs -text
+Fluxes[[:space:]]and[[:space:]]Scattering[[:space:]]Angle/Radiated[[:space:]]Energy/energy_rad.m filter=lfs diff=lfs merge=lfs -text
+Fluxes[[:space:]]and[[:space:]]Scattering[[:space:]]Angle/Radiated[[:space:]]Angular[[:space:]]Momentum/angmomloss_rad.m filter=lfs diff=lfs merge=lfs -text
+Fluxes[[:space:]]and[[:space:]]Scattering[[:space:]]Angle/Static[[:space:]]Contribution[[:space:]]to[[:space:]]Angular[[:space:]]Momentum[[:space:]]Loss/angmomloss_static.m filter=lfs diff=lfs merge=lfs -text
+Fluxes[[:space:]]and[[:space:]]Scattering[[:space:]]Angle/Dissipative[[:space:]]Scattering[[:space:]]Angle/ScattAngle_Diss.m filter=lfs diff=lfs merge=lfs -text
